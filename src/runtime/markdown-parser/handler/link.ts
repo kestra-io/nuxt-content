@@ -29,8 +29,8 @@ export default function link (h: H, node: Node) {
 }
 
 function normalizeLink (link: string) {
-  if (link.endsWith('.md') && (isRelative(link) || (!/^https?/.test(link) && !link.startsWith('/')))) {
-    return generatePath(link.replace(/\.md$/, ''), { forceLeadingSlash: false })
+  if (link.replace(/#.+/, '').endsWith('.md') && (isRelative(link) || (!/^https?/.test(link) && !link.startsWith('/')))) {
+    return generatePath(link.replace(/\.md#/, '#'), { forceLeadingSlash: false })
   } else {
     return link
   }
